@@ -53,6 +53,21 @@ namespace Nand4Fun
             And(a, b).Should().Be(expected);
         }
 
+        public bool Or(bool a, bool b)
+        {
+            //return Not(And(Not(a), Not(b)));
+            return Nand(Nand(a, a), Nand(b, b));
+        }
+
+        [TestCase(true, true, true)]
+        [TestCase(true, false, true)]
+        [TestCase(false, true, true)]
+        [TestCase(false, false, false)]
+        public void OrTests(bool a, bool b, bool expected)
+        {
+            Or(a, b).Should().Be(expected);
+        }
+
 
     }
 }
