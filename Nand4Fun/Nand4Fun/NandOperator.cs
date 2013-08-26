@@ -140,8 +140,6 @@ namespace Nand4Fun
                         Nand(Nand(a, b), Nand(a, b))
                         )
                     ));
-
-            //return false;
         }
 
         [TestCase(true, true, false)]
@@ -153,7 +151,39 @@ namespace Nand4Fun
             Xor(a, b).Should().Be(expected);
         }
 
-       
+        public bool Nor(bool a, bool b)
+        {
+            //return Not(Or(a, b));
+            //return Not(Nand(Nand(a, a), Nand(b, b)));
+            return Nand(
+                Nand(Nand(a, a), Nand(b, b)),
+                Nand(Nand(a, a), Nand(b, b))
+                );
 
+        }
+
+        [TestCase(true, true, false)]
+        [TestCase(true, false, false)]
+        [TestCase(false, true, false)]
+        [TestCase(false, false, true)]
+        public void NorTests(bool a, bool b, bool expected)
+        {
+            Nor(a, b).Should().Be(expected);
+        }
+
+
+        public bool Xnor(bool a, bool b)
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestCase(true, true, true)]
+        [TestCase(true, false, false)]
+        [TestCase(false, true, false)]
+        [TestCase(false, false, true)]
+        public void XnorTests(bool a, bool b, bool expected)
+        {
+            Xnor(a, b).Should().Be(expected);
+        }
     }
 }
