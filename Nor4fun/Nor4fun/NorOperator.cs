@@ -46,5 +46,22 @@ namespace Nor4fun
         {
             Or(a, b).Should().Be(expected);
         }
+
+        public bool And(bool a, bool b)
+        {
+            //return Not(Nor(a, b));
+            return Nor(Nor(a, a), Nor(b, b));
+        }
+
+        [TestCase(false, false, false)]
+        [TestCase(true, false, false)]
+        [TestCase(false, true, false)]
+        [TestCase(true, true, true)]
+        public void AndTests(bool a, bool b, bool expected)
+        {
+            And(a, b).Should().Be(expected);
+        }
+
+
     }
 }
