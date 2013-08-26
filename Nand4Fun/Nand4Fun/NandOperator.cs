@@ -69,5 +69,68 @@ namespace Nand4Fun
         }
 
 
+        public bool AndNot(bool a, bool b)
+        {
+            //return And(a, Not(b));
+            return Nand(
+                Nand(
+                    a,
+                    Nand(b, b)
+                    ),
+                Nand(
+                    a,
+                    Nand(b, b)
+                    ));
+        }
+
+        [TestCase(true, true, false)]
+        [TestCase(true, false, true)]
+        [TestCase(false, true, false)]
+        [TestCase(false, false, false)]
+        public void AndNotTests(bool a, bool b, bool expected)
+        {
+            AndNot(a, b).Should().Be(expected);
+        }
+
+        public bool NotAnd(bool a, bool b)
+        {
+            //return And(Not(a), b);
+            return Nand(
+                Nand(
+                    Nand(a, a),
+                    b
+                    ),
+                Nand(
+                    Nand(a, a),
+                    b
+                    ));
+        }
+
+        [TestCase(true, true, false)]
+        [TestCase(true, false, false)]
+        [TestCase(false, true, true)]
+        [TestCase(false, false, false)]
+        public void NotAndTests(bool a, bool b, bool expected)
+        {
+            NotAnd(a, b).Should().Be(expected);
+        }
+
+        public bool Xor(bool a, bool b)
+        {
+            return And(Or(a, b), Not(And(a, b)));
+            //return false;
+        }
+
+        [TestCase(true, true, false)]
+        [TestCase(true, false, true)]
+        [TestCase(false, true, true)]
+        [TestCase(false, false, false)]
+        public void XorTests(bool a, bool b, bool expected)
+        {
+            Xor(a, b).Should().Be(expected);
+        }
+
+       
+
     }
 }
