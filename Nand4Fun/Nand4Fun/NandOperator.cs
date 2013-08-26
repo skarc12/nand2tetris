@@ -117,7 +117,30 @@ namespace Nand4Fun
 
         public bool Xor(bool a, bool b)
         {
-            return And(Or(a, b), Not(And(a, b)));
+            //return And(Or(a, b), Not(And(a, b)));
+            //return AndNot(Or(a, b), And(a, b));
+
+            //return AndNot(
+            //    Nand(Nand(a, a), Nand(b, b)),
+            //    Nand(Nand(a, b), Nand(a, b))
+            //    );
+
+            return Nand(
+                Nand(
+                    Nand(Nand(a, a), Nand(b, b)),
+                    Nand(
+                        Nand(Nand(a, b), Nand(a, b)),
+                        Nand(Nand(a, b), Nand(a, b))
+                        )
+                    ),
+                Nand(
+                    Nand(Nand(a, a), Nand(b, b)),
+                    Nand(
+                        Nand(Nand(a, b), Nand(a, b)),
+                        Nand(Nand(a, b), Nand(a, b))
+                        )
+                    ));
+
             //return false;
         }
 
