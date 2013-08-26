@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -174,7 +175,59 @@ namespace Nand4Fun
 
         public bool Xnor(bool a, bool b)
         {
-            throw new NotImplementedException();
+            //return Not(Xor(a, b));
+
+            //return Not(
+            //    Nand(
+            //        Nand(
+            //            Nand(Nand(a, a), Nand(b, b)),
+            //            Nand(
+            //                Nand(Nand(a, b), Nand(a, b)),
+            //                Nand(Nand(a, b), Nand(a, b))
+            //                )
+            //            ),
+            //        Nand(
+            //            Nand(Nand(a, a), Nand(b, b)),
+            //            Nand(
+            //                Nand(Nand(a, b), Nand(a, b)),
+            //                Nand(Nand(a, b), Nand(a, b))
+            //                )
+            //            ))
+            //    );
+
+            return Nand(
+                Nand(
+                    Nand(
+                        Nand(Nand(a, a), Nand(b, b)),
+                        Nand(
+                            Nand(Nand(a, b), Nand(a, b)),
+                            Nand(Nand(a, b), Nand(a, b))
+                            )
+                        ),
+                    Nand(
+                        Nand(Nand(a, a), Nand(b, b)),
+                        Nand(
+                            Nand(Nand(a, b), Nand(a, b)),
+                            Nand(Nand(a, b), Nand(a, b))
+                            )
+                        )),
+                 Nand(
+                    Nand(
+                        Nand(Nand(a, a), Nand(b, b)),
+                        Nand(
+                            Nand(Nand(a, b), Nand(a, b)),
+                            Nand(Nand(a, b), Nand(a, b))
+                            )
+                        ),
+                    Nand(
+                        Nand(Nand(a, a), Nand(b, b)),
+                        Nand(
+                            Nand(Nand(a, b), Nand(a, b)),
+                            Nand(Nand(a, b), Nand(a, b))
+                            )
+                        ))
+                );
+
         }
 
         [TestCase(true, true, true)]
