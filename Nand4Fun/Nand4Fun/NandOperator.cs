@@ -38,5 +38,21 @@ namespace Nand4Fun
             Not(a).Should().Be(expected);
         }
 
+        public bool And(bool a, bool b)
+        {
+            //return Not(Nand(a, b));
+            return Nand(Nand(a, b), Nand(a, b));
+        }
+
+        [TestCase(true, true, true)]
+        [TestCase(true, false, false)]
+        [TestCase(false, true, false)]
+        [TestCase(false, false, false)]
+        public void AndTests(bool a, bool b, bool expected)
+        {
+            And(a, b).Should().Be(expected);
+        }
+
+
     }
 }
