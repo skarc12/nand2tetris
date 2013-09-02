@@ -34,8 +34,8 @@ namespace NegativeMadness
         public bool FullAdderCarry(bool carry, bool bit1, bool bit2)
         {
             return
-                ((bit1 || bit2) && carry) ||
-                (bit1 && bit2);
+                (bit1 && bit2) ||
+                ((bit1 || bit2) && carry);
 
 
             //(carry && (bit1 ^ bit2)) ||
@@ -57,11 +57,25 @@ namespace NegativeMadness
             }
             return result;
         }
+
+        public short Neg(short input)
+        {
+            return (short) (~input + 1);
+        }
     }
 
     [TestFixture]
     public class ChipsTests
     {
+        [TestCase(10)]
+        [TestCase(0)]
+        [TestCase(-10)]
+        public void NegTests(short input)
+        {
+            var chips = new Chips();
+            chips.Neg(input).Should().Be(-input);
+        }
+
         [TestCase(false, false, false)]
         [TestCase(false, true, true)]
         [TestCase(true, false, true)]
