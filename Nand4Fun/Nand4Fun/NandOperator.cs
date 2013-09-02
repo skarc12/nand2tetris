@@ -120,21 +120,23 @@ namespace Nand4Fun
             //    Nand(Nand(a, b), Nand(a, b))
             //    );
 
-            return Nand(
-                Nand(
-                    Nand(Nand(a, a), Nand(b, b)),
-                    Nand(
-                        Nand(Nand(a, b), Nand(a, b)),
-                        Nand(Nand(a, b), Nand(a, b))
-                        )
-                    ),
-                Nand(
-                    Nand(Nand(a, a), Nand(b, b)),
-                    Nand(
-                        Nand(Nand(a, b), Nand(a, b)),
-                        Nand(Nand(a, b), Nand(a, b))
-                        )
-                    ));
+            //return Nand(
+            //    Nand(
+            //        Nand(Nand(a, a), Nand(b, b)),
+            //        Nand(
+            //            Nand(Nand(a, b), Nand(a, b)),
+            //            Nand(Nand(a, b), Nand(a, b))
+            //            )
+            //        ),
+            //    Nand(
+            //        Nand(Nand(a, a), Nand(b, b)),
+            //        Nand(
+            //            Nand(Nand(a, b), Nand(a, b)),
+            //            Nand(Nand(a, b), Nand(a, b))
+            //            )
+            //        ));
+
+            return Nand(Nand(a, Nand(a, b)), Nand(b, Nand(a, b)));
         }
 
         [TestCase(true, true, false)]
@@ -189,37 +191,42 @@ namespace Nand4Fun
             //            ))
             //    );
 
+            //return Nand(
+            //    Nand(
+            //        Nand(
+            //            Nand(Nand(a, a), Nand(b, b)),
+            //            Nand(
+            //                Nand(Nand(a, b), Nand(a, b)),
+            //                Nand(Nand(a, b), Nand(a, b))
+            //                )
+            //            ),
+            //        Nand(
+            //            Nand(Nand(a, a), Nand(b, b)),
+            //            Nand(
+            //                Nand(Nand(a, b), Nand(a, b)),
+            //                Nand(Nand(a, b), Nand(a, b))
+            //                )
+            //            )),
+            //     Nand(
+            //        Nand(
+            //            Nand(Nand(a, a), Nand(b, b)),
+            //            Nand(
+            //                Nand(Nand(a, b), Nand(a, b)),
+            //                Nand(Nand(a, b), Nand(a, b))
+            //                )
+            //            ),
+            //        Nand(
+            //            Nand(Nand(a, a), Nand(b, b)),
+            //            Nand(
+            //                Nand(Nand(a, b), Nand(a, b)),
+            //                Nand(Nand(a, b), Nand(a, b))
+            //                )
+            //            ))
+            //    );
+
             return Nand(
-                Nand(
-                    Nand(
-                        Nand(Nand(a, a), Nand(b, b)),
-                        Nand(
-                            Nand(Nand(a, b), Nand(a, b)),
-                            Nand(Nand(a, b), Nand(a, b))
-                            )
-                        ),
-                    Nand(
-                        Nand(Nand(a, a), Nand(b, b)),
-                        Nand(
-                            Nand(Nand(a, b), Nand(a, b)),
-                            Nand(Nand(a, b), Nand(a, b))
-                            )
-                        )),
-                 Nand(
-                    Nand(
-                        Nand(Nand(a, a), Nand(b, b)),
-                        Nand(
-                            Nand(Nand(a, b), Nand(a, b)),
-                            Nand(Nand(a, b), Nand(a, b))
-                            )
-                        ),
-                    Nand(
-                        Nand(Nand(a, a), Nand(b, b)),
-                        Nand(
-                            Nand(Nand(a, b), Nand(a, b)),
-                            Nand(Nand(a, b), Nand(a, b))
-                            )
-                        ))
+                 Nand(Nand(a, Nand(a, b)), Nand(b, Nand(a, b))),
+                 Nand(Nand(a, Nand(a, b)), Nand(b, Nand(a, b)))
                 );
 
         }
