@@ -34,9 +34,13 @@ namespace NegativeMadness
         public bool FullAdderCarry(bool carry, bool bit1, bool bit2)
         {
             return
-                (carry && (bit1 ^ bit2)) ||
-                (bit1 && (carry ^ bit2)) ||
-                (carry && bit1);
+                ((bit1 || bit2) && carry) ||
+                (bit1 && bit2);
+
+
+            //(carry && (bit1 ^ bit2)) ||
+            //(bit1 && (carry ^ bit2)) ||
+            //(carry && bit1);
 
         }
 
